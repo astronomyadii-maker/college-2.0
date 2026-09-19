@@ -1,0 +1,55 @@
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; color: #222; }
+
+  /* Header */
+  header { background: #0b3d66; color: #fff; padding: 25px 20px; text-align: center; }
+  header h1 { font-size: 28px; margin-bottom: 5px; }
+  header p { font-size: 14px; color: #cfe3f5; }
+
+  /* Navigation */
+  nav { background: #0d5a9c; display: flex; justify-content: center; flex-wrap: wrap; }
+  nav a {
+    color: #fff; text-decoration: none; padding: 14px 22px;
+    font-size: 15px; transition: background 0.2s;
+  }
+  nav a:hover { background: #0b3d66; }
+
+  /* Sections */
+  section { max-width: 950px; margin: 40px auto; padding: 0 20px; }
+  section h2 {
+    color: #0b3d66; border-bottom: 3px solid #f5a623;
+    display: inline-block; padding-bottom: 6px; margin-bottom: 20px;
+  }
+  section p { line-height: 1.7; margin-bottom: 15px; }
+
+  /* Cards for Facilities & Departments */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .card {
+    background: #fff; border-radius: 8px; padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-top: 4px solid #f5a623;
+  }
+  .card h3 { color: #0b3d66; margin-bottom: 8px; font-size: 18px; }
+  .card p { font-size: 14px; color: #555; margin-bottom: 0; }
+
+  /* Login / Registration */
+  .form-box {
+    background: #fff; padding: 25px; border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); max-width: 400px; margin: 0 auto;
+  }
+  .form-box label { display: block; margin: 12px 0 5px; font-size: 14px; font-weight: bold; }
+  .form-box input {
+    width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;
+  }
+  .form-box button {
+    margin-top: 18px; width: 100%; padding: 10px; background: #0d5a9c;
+    color: #fff; border: none; border-radius: 4px; font-size: 15px; cursor: pointer;
+  }
+  .form-box button:hover { background: #0b3d66; }
+  .toggle-links { text-align: center; margin-top: 12px; font-size: 13px; }
+  .toggle-links a { color: #0d5a9c; cursor: pointer; text-decoration: underline; }
+
+  /* Footer */
+  footer {
+    background: #0b3d66; color: #cfe3f5; text-align: center;
+    padding: 18px; margin-top: 40px; font-size: 13px;
+  }

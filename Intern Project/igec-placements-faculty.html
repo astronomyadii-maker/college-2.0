@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Placements & Faculty | Indira Gandhi Engineering College, Sagar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ Scoped styles for the two sections ============ */
+  :root {
+    --ink: #14213d;
+    --ink-soft: #4a5673;
+    --paper: #f6f7fa;
+    --white: #ffffff;
+    --line: #dde1ea;
+    --saffron: #f0a202;
+    --teal: #0f766e;
+    --head: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--body); color: var(--ink); background: var(--paper); line-height: 1.6; }
+  .igec-wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  .igec-section { padding: 72px 0; }
+  .igec-section h2 { font-family: var(--head); font-size: clamp(1.9rem, 4vw, 2.75rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; max-width: 18ch; }
+  .igec-lead { color: var(--ink-soft); max-width: 60ch; margin-top: 14px; }
+
+  /* ---------- Placements ---------- */
+  #placements { background: var(--ink); color: #fff; }
+  #placements .igec-lead { color: #b9c2d9; }
+  .pl-top { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; }
+  .pl-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #2b3a5e; border: 1px solid #2b3a5e; border-radius: 10px; overflow: hidden; }
+  .pl-stat { background: var(--ink); padding: 22px 20px; }
+  .pl-stat b { display: block; font-family: var(--head); font-size: 2.2rem; font-weight: 800; color: var(--saffron); line-height: 1; }
+  .pl-stat span { font-size: .9rem; color: #b9c2d9; }
+
+  .pl-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; margin-top: 56px; }
+  .pl-grid h3 { font-family: var(--head); font-size: 1.25rem; margin-bottom: 18px; }
+
+  .pl-chart { display: flex; align-items: flex-end; gap: 18px; height: 220px; border-bottom: 1px solid #2b3a5e; padding: 0 4px; }
+  .pl-bar { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; gap: 6px; font-size: .85rem; }
+  .pl-bar i { display: block; width: 100%; max-width: 64px; height: var(--h); background: var(--saffron); border-radius: 4px 4px 0 0; }
+  .pl-bar:last-child i { background: #fff; }
+  .pl-years { display: flex; gap: 18px; padding: 8px 4px 0; font-size: .85rem; color: #b9c2d9; }
+  .pl-years span { flex: 1; text-align: center; }
+
+  .pl-recruiters { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
+  .pl-recruiters li { border: 1px solid #3a4b75; border-radius: 999px; padding: 7px 16px; font-size: .92rem; }
+  .pl-note { margin-top: 20px; font-size: .9rem; color: #b9c2d9; }
+
+  .pl-process { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; list-style: none; counter-reset: step; }
+  .pl-process li { counter-increment: step; border-top: 3px solid var(--saffron); padding-top: 14px; }
+  .pl-process li::before { content: "Step " counter(step); display: block; font-size: .8rem; color: #b9c2d9; margin-bottom: 4px; }
+  .pl-process strong { font-family: var(--head); font-size: 1.05rem; }
+  .pl-process p { font-size: .9rem; color: #b9c2d9; margin-top: 4px; }
+
+  /* ---------- Faculty ---------- */
+  .fac-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+  .fac-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .fac-tabs button { font: 500 .92rem var(--body); padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--white); color: var(--ink); cursor: pointer; }
+  .fac-tabs button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .fac-grid { margin-top: 36px; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+  .fac-card { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+  .fac-card[hidden] { display: none; }
+  .fac-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--teal); color: #fff; display: grid; place-items: center; font-family: var(--head); font-weight: 700; font-size: 1.15rem; margin-bottom: 14px; }
+  .fac-card h3 { font-family: var(--head); font-size: 1.1rem; }
+  .fac-role { font-size: .9rem; color: var(--teal); font-weight: 600; }
+  .fac-meta { margin-top: 10px; font-size: .88rem; color: var(--ink-soft); }
+  .fac-meta div + div { margin-top: 4px; }
+  .fac-meta dt { display: inline; font-weight: 600; color: var(--ink); }
+  .fac-meta dd { display: inline; }
+
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--saffron); outline-offset: 2px; }
+
+  @media (max-width: 860px) {
+    .pl-top, .pl-grid { grid-template-columns: 1fr; gap: 32px; }
+    .pl-process { grid-template-columns: repeat(2, 1fr); }
+    .igec-section { padding: 52px 0; }
+  }
+  @media (max-width: 480px) { .pl-process { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- ===================== PLACEMENTS SECTION ===================== -->
+<section class="igec-section" id="placements" aria-labelledby="pl-title">
+  <div class="igec-wrap">
+
+    <div class="pl-top">
+      <div>
+        <h2 id="pl-title">Placements at IGEC Sagar</h2>
+        <p class="igec-lead">Our Training &amp; Placement Cell prepares students from the first year, with aptitude training, technical workshops and mock interviews, so they are ready when recruiters visit campus.</p>
+      </div>
+      <!-- EDIT: replace the numbers with the college's official figures -->
+      <div class="pl-stats">
+        <div class="pl-stat"><b>50+</b><span>Companies visited last year</span></div>
+        <div class="pl-stat"><b>70%</b><span>Students placed</span></div>
+        <div class="pl-stat"><b>15 LPA</b><span>Highest package</span></div>
+        <div class="pl-stat"><b>3.5 LPA</b><span>Average package</span></div>
+      </div>
+    </div>
+
+    <div class="pl-grid">
+      <div>
+        <h3>Students placed each year</h3>
+        <!-- EDIT: change --h (0%–100%) and the number for each year -->
+        <div class="pl-chart" role="img" aria-label="Bar chart of students placed per year">
+          <div class="pl-bar"><span>00</span><i style="--h:40%"></i></div>
+          <div class="pl-bar"><span>00</span><i style="--h:55%"></i></div>
+          <div class="pl-bar"><span>00</span><i style="--h:70%"></i></div>
+          <div class="pl-bar"><span>00</span><i style="--h:85%"></i></div>
+        </div>
+        <div class="pl-years"><span>2022-23</span><span>2023-24</span><span>2024-25</span><span>2025-26</span></div>
+      </div>
+
+      <div>
+        <h3>Recruiters who visit us</h3>
+        <!-- EDIT: list the real recruiting companies -->
+        <ul class="pl-recruiters">
+          <li> TCS</li>
+          <li>Infosys</li>
+          <li>Wipro</li>
+          <li>Cognizant</li>
+          <li>Adobe</li>
+          <li>MRF</li>
+          <li>Voltas</li>
+          <li>Samsung</li>
+        </ul>
+        <p class="pl-note">Placement figures are indicative. Please refer to the Training &amp; Placement Cell for the latest data.</p>
+      </div>
+    </div>
+
+    <ol class="pl-process">
+      <li><strong>Training</strong><p>Aptitude, reasoning and communication classes.</p></li>
+      <li><strong>Pre-placement talk</strong><p>Companies explain roles, skills and selection rounds.</p></li>
+      <li><strong>Selection rounds</strong><p>Online test, technical interview and HR interview.</p></li>
+      <li><strong>Offer letter</strong><p>Selected students receive offers on campus.</p></li>
+    </ol>
+
+  </div>
+</section>
+
+<!-- ===================== FACULTY SECTION ===================== -->
+<section class="igec-section" id="faculty" aria-labelledby="fac-title">
+  <div class="igec-wrap">
+
+    <div class="fac-head">
+      <div>
+        <h2 id="fac-title">Our Faculty</h2>
+        <p class="igec-lead">Experienced teachers and mentors who guide students in the classroom, in labs and in projects.</p>
+      </div>
+      <div class="fac-tabs" role="group" aria-label="Filter faculty by department">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="cse" aria-pressed="false">Computer Science</button>
+        <button type="button" data-filter="ece" aria-pressed="false">Electronics</button>
+        <button type="button" data-filter="me" aria-pressed="false">Mechanical</button>
+        <button type="button" data-filter="ce" aria-pressed="false">Civil</button>
+      </div>
+    </div>
+
+    <!-- EDIT: copy one card per faculty member. Set data-dept to cse, ece, me or ce -->
+    <div class="fac-grid">
+
+      <article class="fac-card" data-dept="cse">
+        <div class="fac-avatar" aria-hidden="true">AB</div>
+        <h3>Dr. </h3>
+        <p class="fac-role">Dr. Neha Sharma &amp; Head, Information Technology</p>
+        <dl class="fac-meta">
+          <div><dt>Qualification: </dt><dd>Ph.D., M.Tech</dd></div>
+          <div><dt>Experience: </dt><dd>15 years</dd></div>
+          <div><dt>Expertise: </dt><dd>Machine Learning, Databases</dd></div>
+        </dl>
+      </article>
+
+      <article class="fac-card" data-dept="cse">
+        <div class="fac-avatar" aria-hidden="true">CD</div>
+        <h3>Prof. Mr. Rajesh Sir</h3>
+        <p class="fac-role">Assistant Professor, Information Technology</p>
+        <dl class="fac-meta">
+          <div><dt>Qualification: </dt><dd>M.Tech</dd></div>
+          <div><dt>Experience: </dt><dd>8 years</dd></div>
+          <div><dt>Expertise: </dt><dd>Web Development, Networks</dd></div>
+        </dl>
+      </article>
+
+      <article class="fac-card" data-dept="ece">
+        <div class="fac-avatar" aria-hidden="true">EF</div>
+        <h3>Dr. Name Surname</h3>
+        <p class="fac-role">Dr.  Maniram &amp; Head, Electronics</p>
+        <dl class="fac-meta">
+          <div><dt>Qualification: </dt><dd>Ph.D., M.Tech</dd></div>
+          <div><dt>Experience: </dt><dd>20 years</dd></div>
+          <div><dt>Expertise: </dt><dd>VLSI, Embedded Systems</dd></div>
+        </dl>
+      </article>
+
+      <article class="fac-card" data-dept="me">
+        <div class="fac-avatar" aria-hidden="true">GH</div>
+        <h3>Dr. Rajendar Prasad</h3>
+        <p class="fac-role">Associate Professor, Mechanical</p>
+        <dl class="fac-meta">
+          <div><dt>Qualification: </dt><dd>Ph.D., M.Tech</dd></div>
+          <div><dt>Experience: </dt><dd>15 years</dd></div>
+          <div><dt>Expertise: </dt><dd>Thermal Engineering, CAD/CAM</dd></div>
+        </dl>
+      </article>
+
+      <article class="fac-card" data-dept="ce">
+        <div class="fac-avatar" aria-hidden="true">IJ</div>
+        <h3>Prof. Rawat Sir</h3>
+        <p class="fac-role">Assistant Professor, Civil</p>
+        <dl class="fac-meta">
+          <div><dt>Qualification: </dt><dd>M.Tech</dd></div>
+          <div><dt>Experience: </dt><dd>13 years</dd></div>
+          <div><dt>Expertise: </dt><dd>Structural Engineering</dd></div>
+        </dl>
+      </article>
+
+      <article class="fac-card" data-dept="ce">
+        <div class="fac-avatar" aria-hidden="true">KL</div>
+        <h3>Prof. Satish Kumar Jain</h3>
+        <p class="fac-role">Assistant Professor, Civil</p>
+        <dl class="fac-meta">
+          <div><dt>Qualification: </dt><dd>M.Tech</dd></div>
+          <div><dt>Experience: </dt><dd>14 years</dd></div>
+          <div><dt>Expertise: </dt><dd>Geotechnical Engineering</dd></div>
+        </dl>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // Department filter for the faculty cards
+  (function () {
+    var buttons = document.querySelectorAll('.fac-tabs button');
+    var cards = document.querySelectorAll('.fac-card');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.getAttribute('data-filter');
+        buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        cards.forEach(function (c) {
+          c.hidden = !(f === 'all' || c.getAttribute('data-dept') === f);
+        });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
